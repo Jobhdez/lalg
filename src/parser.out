@@ -1,0 +1,415 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> expressions
+Rule 1     expressions -> expression expressions
+Rule 2     expressions -> expression
+Rule 3     expression -> INTEGER
+Rule 4     expression -> NAME
+Rule 5     expression -> vector
+Rule 6     expression -> matrix
+Rule 7     expression -> expression PLUS expression
+Rule 8     expression -> expression MINUS expression
+Rule 9     expression -> expression MUL expression
+Rule 10    vector -> LBRACKET elements RBRACKET
+Rule 11    matrix -> LBRACKET vectors RBRACKET
+Rule 12    vectors -> vector vectors
+Rule 13    vectors -> vector
+Rule 14    elements -> INTEGER elements
+Rule 15    elements -> INTEGER
+
+Terminals, with rules where they appear
+
+INTEGER              : 3 14 15
+LBRACKET             : 10 11
+MINUS                : 8
+MUL                  : 9
+NAME                 : 4
+PLUS                 : 7
+RBRACKET             : 10 11
+error                : 
+
+Nonterminals, with rules where they appear
+
+elements             : 10 14
+expression           : 1 2 7 7 8 8 9 9
+expressions          : 1 0
+matrix               : 6
+vector               : 5 12 13
+vectors              : 11 12
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . expressions
+    (1) expressions -> . expression expressions
+    (2) expressions -> . expression
+    (3) expression -> . INTEGER
+    (4) expression -> . NAME
+    (5) expression -> . vector
+    (6) expression -> . matrix
+    (7) expression -> . expression PLUS expression
+    (8) expression -> . expression MINUS expression
+    (9) expression -> . expression MUL expression
+    (10) vector -> . LBRACKET elements RBRACKET
+    (11) matrix -> . LBRACKET vectors RBRACKET
+
+    INTEGER         shift and go to state 3
+    NAME            shift and go to state 4
+    LBRACKET        shift and go to state 7
+
+    expressions                    shift and go to state 1
+    expression                     shift and go to state 2
+    vector                         shift and go to state 5
+    matrix                         shift and go to state 6
+
+state 1
+
+    (0) S' -> expressions .
+
+
+
+state 2
+
+    (1) expressions -> expression . expressions
+    (2) expressions -> expression .
+    (7) expression -> expression . PLUS expression
+    (8) expression -> expression . MINUS expression
+    (9) expression -> expression . MUL expression
+    (1) expressions -> . expression expressions
+    (2) expressions -> . expression
+    (3) expression -> . INTEGER
+    (4) expression -> . NAME
+    (5) expression -> . vector
+    (6) expression -> . matrix
+    (7) expression -> . expression PLUS expression
+    (8) expression -> . expression MINUS expression
+    (9) expression -> . expression MUL expression
+    (10) vector -> . LBRACKET elements RBRACKET
+    (11) matrix -> . LBRACKET vectors RBRACKET
+
+    $end            reduce using rule 2 (expressions -> expression .)
+    PLUS            shift and go to state 9
+    MINUS           shift and go to state 10
+    MUL             shift and go to state 11
+    INTEGER         shift and go to state 3
+    NAME            shift and go to state 4
+    LBRACKET        shift and go to state 7
+
+    expression                     shift and go to state 2
+    expressions                    shift and go to state 8
+    vector                         shift and go to state 5
+    matrix                         shift and go to state 6
+
+state 3
+
+    (3) expression -> INTEGER .
+
+    PLUS            reduce using rule 3 (expression -> INTEGER .)
+    MINUS           reduce using rule 3 (expression -> INTEGER .)
+    MUL             reduce using rule 3 (expression -> INTEGER .)
+    INTEGER         reduce using rule 3 (expression -> INTEGER .)
+    NAME            reduce using rule 3 (expression -> INTEGER .)
+    LBRACKET        reduce using rule 3 (expression -> INTEGER .)
+    $end            reduce using rule 3 (expression -> INTEGER .)
+
+
+state 4
+
+    (4) expression -> NAME .
+
+    PLUS            reduce using rule 4 (expression -> NAME .)
+    MINUS           reduce using rule 4 (expression -> NAME .)
+    MUL             reduce using rule 4 (expression -> NAME .)
+    INTEGER         reduce using rule 4 (expression -> NAME .)
+    NAME            reduce using rule 4 (expression -> NAME .)
+    LBRACKET        reduce using rule 4 (expression -> NAME .)
+    $end            reduce using rule 4 (expression -> NAME .)
+
+
+state 5
+
+    (5) expression -> vector .
+
+    PLUS            reduce using rule 5 (expression -> vector .)
+    MINUS           reduce using rule 5 (expression -> vector .)
+    MUL             reduce using rule 5 (expression -> vector .)
+    INTEGER         reduce using rule 5 (expression -> vector .)
+    NAME            reduce using rule 5 (expression -> vector .)
+    LBRACKET        reduce using rule 5 (expression -> vector .)
+    $end            reduce using rule 5 (expression -> vector .)
+
+
+state 6
+
+    (6) expression -> matrix .
+
+    PLUS            reduce using rule 6 (expression -> matrix .)
+    MINUS           reduce using rule 6 (expression -> matrix .)
+    MUL             reduce using rule 6 (expression -> matrix .)
+    INTEGER         reduce using rule 6 (expression -> matrix .)
+    NAME            reduce using rule 6 (expression -> matrix .)
+    LBRACKET        reduce using rule 6 (expression -> matrix .)
+    $end            reduce using rule 6 (expression -> matrix .)
+
+
+state 7
+
+    (10) vector -> LBRACKET . elements RBRACKET
+    (11) matrix -> LBRACKET . vectors RBRACKET
+    (14) elements -> . INTEGER elements
+    (15) elements -> . INTEGER
+    (12) vectors -> . vector vectors
+    (13) vectors -> . vector
+    (10) vector -> . LBRACKET elements RBRACKET
+
+    INTEGER         shift and go to state 15
+    LBRACKET        shift and go to state 12
+
+    elements                       shift and go to state 13
+    vectors                        shift and go to state 14
+    vector                         shift and go to state 16
+
+state 8
+
+    (1) expressions -> expression expressions .
+
+    $end            reduce using rule 1 (expressions -> expression expressions .)
+
+
+state 9
+
+    (7) expression -> expression PLUS . expression
+    (3) expression -> . INTEGER
+    (4) expression -> . NAME
+    (5) expression -> . vector
+    (6) expression -> . matrix
+    (7) expression -> . expression PLUS expression
+    (8) expression -> . expression MINUS expression
+    (9) expression -> . expression MUL expression
+    (10) vector -> . LBRACKET elements RBRACKET
+    (11) matrix -> . LBRACKET vectors RBRACKET
+
+    INTEGER         shift and go to state 3
+    NAME            shift and go to state 4
+    LBRACKET        shift and go to state 7
+
+    expression                     shift and go to state 17
+    vector                         shift and go to state 5
+    matrix                         shift and go to state 6
+
+state 10
+
+    (8) expression -> expression MINUS . expression
+    (3) expression -> . INTEGER
+    (4) expression -> . NAME
+    (5) expression -> . vector
+    (6) expression -> . matrix
+    (7) expression -> . expression PLUS expression
+    (8) expression -> . expression MINUS expression
+    (9) expression -> . expression MUL expression
+    (10) vector -> . LBRACKET elements RBRACKET
+    (11) matrix -> . LBRACKET vectors RBRACKET
+
+    INTEGER         shift and go to state 3
+    NAME            shift and go to state 4
+    LBRACKET        shift and go to state 7
+
+    expression                     shift and go to state 18
+    vector                         shift and go to state 5
+    matrix                         shift and go to state 6
+
+state 11
+
+    (9) expression -> expression MUL . expression
+    (3) expression -> . INTEGER
+    (4) expression -> . NAME
+    (5) expression -> . vector
+    (6) expression -> . matrix
+    (7) expression -> . expression PLUS expression
+    (8) expression -> . expression MINUS expression
+    (9) expression -> . expression MUL expression
+    (10) vector -> . LBRACKET elements RBRACKET
+    (11) matrix -> . LBRACKET vectors RBRACKET
+
+    INTEGER         shift and go to state 3
+    NAME            shift and go to state 4
+    LBRACKET        shift and go to state 7
+
+    expression                     shift and go to state 19
+    vector                         shift and go to state 5
+    matrix                         shift and go to state 6
+
+state 12
+
+    (10) vector -> LBRACKET . elements RBRACKET
+    (14) elements -> . INTEGER elements
+    (15) elements -> . INTEGER
+
+    INTEGER         shift and go to state 15
+
+    elements                       shift and go to state 13
+
+state 13
+
+    (10) vector -> LBRACKET elements . RBRACKET
+
+    RBRACKET        shift and go to state 20
+
+
+state 14
+
+    (11) matrix -> LBRACKET vectors . RBRACKET
+
+    RBRACKET        shift and go to state 21
+
+
+state 15
+
+    (14) elements -> INTEGER . elements
+    (15) elements -> INTEGER .
+    (14) elements -> . INTEGER elements
+    (15) elements -> . INTEGER
+
+    RBRACKET        reduce using rule 15 (elements -> INTEGER .)
+    INTEGER         shift and go to state 15
+
+    elements                       shift and go to state 22
+
+state 16
+
+    (12) vectors -> vector . vectors
+    (13) vectors -> vector .
+    (12) vectors -> . vector vectors
+    (13) vectors -> . vector
+    (10) vector -> . LBRACKET elements RBRACKET
+
+    RBRACKET        reduce using rule 13 (vectors -> vector .)
+    LBRACKET        shift and go to state 12
+
+    vector                         shift and go to state 16
+    vectors                        shift and go to state 23
+
+state 17
+
+    (7) expression -> expression PLUS expression .
+    (7) expression -> expression . PLUS expression
+    (8) expression -> expression . MINUS expression
+    (9) expression -> expression . MUL expression
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for MUL resolved as shift
+    INTEGER         reduce using rule 7 (expression -> expression PLUS expression .)
+    NAME            reduce using rule 7 (expression -> expression PLUS expression .)
+    LBRACKET        reduce using rule 7 (expression -> expression PLUS expression .)
+    $end            reduce using rule 7 (expression -> expression PLUS expression .)
+    PLUS            shift and go to state 9
+    MINUS           shift and go to state 10
+    MUL             shift and go to state 11
+
+  ! PLUS            [ reduce using rule 7 (expression -> expression PLUS expression .) ]
+  ! MINUS           [ reduce using rule 7 (expression -> expression PLUS expression .) ]
+  ! MUL             [ reduce using rule 7 (expression -> expression PLUS expression .) ]
+
+
+state 18
+
+    (8) expression -> expression MINUS expression .
+    (7) expression -> expression . PLUS expression
+    (8) expression -> expression . MINUS expression
+    (9) expression -> expression . MUL expression
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for MUL resolved as shift
+    INTEGER         reduce using rule 8 (expression -> expression MINUS expression .)
+    NAME            reduce using rule 8 (expression -> expression MINUS expression .)
+    LBRACKET        reduce using rule 8 (expression -> expression MINUS expression .)
+    $end            reduce using rule 8 (expression -> expression MINUS expression .)
+    PLUS            shift and go to state 9
+    MINUS           shift and go to state 10
+    MUL             shift and go to state 11
+
+  ! PLUS            [ reduce using rule 8 (expression -> expression MINUS expression .) ]
+  ! MINUS           [ reduce using rule 8 (expression -> expression MINUS expression .) ]
+  ! MUL             [ reduce using rule 8 (expression -> expression MINUS expression .) ]
+
+
+state 19
+
+    (9) expression -> expression MUL expression .
+    (7) expression -> expression . PLUS expression
+    (8) expression -> expression . MINUS expression
+    (9) expression -> expression . MUL expression
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for MUL resolved as shift
+    INTEGER         reduce using rule 9 (expression -> expression MUL expression .)
+    NAME            reduce using rule 9 (expression -> expression MUL expression .)
+    LBRACKET        reduce using rule 9 (expression -> expression MUL expression .)
+    $end            reduce using rule 9 (expression -> expression MUL expression .)
+    PLUS            shift and go to state 9
+    MINUS           shift and go to state 10
+    MUL             shift and go to state 11
+
+  ! PLUS            [ reduce using rule 9 (expression -> expression MUL expression .) ]
+  ! MINUS           [ reduce using rule 9 (expression -> expression MUL expression .) ]
+  ! MUL             [ reduce using rule 9 (expression -> expression MUL expression .) ]
+
+
+state 20
+
+    (10) vector -> LBRACKET elements RBRACKET .
+
+    PLUS            reduce using rule 10 (vector -> LBRACKET elements RBRACKET .)
+    MINUS           reduce using rule 10 (vector -> LBRACKET elements RBRACKET .)
+    MUL             reduce using rule 10 (vector -> LBRACKET elements RBRACKET .)
+    INTEGER         reduce using rule 10 (vector -> LBRACKET elements RBRACKET .)
+    NAME            reduce using rule 10 (vector -> LBRACKET elements RBRACKET .)
+    LBRACKET        reduce using rule 10 (vector -> LBRACKET elements RBRACKET .)
+    $end            reduce using rule 10 (vector -> LBRACKET elements RBRACKET .)
+    RBRACKET        reduce using rule 10 (vector -> LBRACKET elements RBRACKET .)
+
+
+state 21
+
+    (11) matrix -> LBRACKET vectors RBRACKET .
+
+    PLUS            reduce using rule 11 (matrix -> LBRACKET vectors RBRACKET .)
+    MINUS           reduce using rule 11 (matrix -> LBRACKET vectors RBRACKET .)
+    MUL             reduce using rule 11 (matrix -> LBRACKET vectors RBRACKET .)
+    INTEGER         reduce using rule 11 (matrix -> LBRACKET vectors RBRACKET .)
+    NAME            reduce using rule 11 (matrix -> LBRACKET vectors RBRACKET .)
+    LBRACKET        reduce using rule 11 (matrix -> LBRACKET vectors RBRACKET .)
+    $end            reduce using rule 11 (matrix -> LBRACKET vectors RBRACKET .)
+
+
+state 22
+
+    (14) elements -> INTEGER elements .
+
+    RBRACKET        reduce using rule 14 (elements -> INTEGER elements .)
+
+
+state 23
+
+    (12) vectors -> vector vectors .
+
+    RBRACKET        reduce using rule 12 (vectors -> vector vectors .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for PLUS in state 17 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 17 resolved as shift
+WARNING: shift/reduce conflict for MUL in state 17 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 18 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 18 resolved as shift
+WARNING: shift/reduce conflict for MUL in state 18 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 19 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 19 resolved as shift
+WARNING: shift/reduce conflict for MUL in state 19 resolved as shift
