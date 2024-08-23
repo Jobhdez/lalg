@@ -77,6 +77,25 @@ def ast_to_lalg(ast):
                     exps = LalgExps([matrix_node, matrix2_node])
                     return LalgForLoop2D(exps, n, inner_n, i, j, op)
 
+                case Minus(Matrix(elements), Matrix(elements2)):
+                    matrix = ast_to_lalg(Exp(Matrix(elements)))
+                    matrix2 = ast_to_lalg(Exp(Matrix(elements2)))
+
+                    matrix_node = LalgMatrix(matrix)
+                    matrix2_node = LalgMatrix(matrix2)
+
+                    n = LalgInt(len(matrix))
+
+                    inner_n = LalgInt(len(matrix[0]))
+ 
+                    op = LalgOp('-')
+
+                    i = LalgInt(0)
+                    j = LalgInt(0)
+
+                    exps = LalgExps([matrix_node, matrix2_node])
+                    return LalgForLoop2D(exps, n, inner_n, i, j, op)
+
                 case Vec(elements):
                     return get_vector_elements(elements)
 
