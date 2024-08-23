@@ -42,6 +42,22 @@ def ast_to_lalg(ast):
                     exps = LalgExps([vec_node, vec_node])
                     return LalgForLoop(exps, n, i, op)
 
+                case Minus(Vec(elements), Vec(elements2)):
+                    vec = ast_to_lalg(Exp(Vec(elements)))
+                    vec2 = ast_to_lalg(Exp(Vec(elements2)))
+
+                    n = LalgInt(len(vec))
+                    i = LalgInt(0)
+
+                    vec_node = LalgVec(vec)
+                    vec2_ode = LalgVec(vec2)
+
+                    op = LalgOp('-')
+                    
+                    exps = LalgExps([vec_node, vec_node])
+                    
+                    return LalgForLoop(exps, n, i, op)
+
                 case Sum(Matrix(elements), Matrix(elements2)):
                     matrix = ast_to_lalg(Exp(Matrix(elements)))
                     matrix2 = ast_to_lalg(Exp(Matrix(elements2)))
